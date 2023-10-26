@@ -1,26 +1,33 @@
 {
-   "AWSTemplateFormationVersion": "2010-09-09",
-   "Parameters" :{
-       "ImageId : {
-           "Type" : "String",
-           "Default": "ami-1234567890abcdef0"
+    "AWSTemplateFormationVersion": "2010-09-09",
+    "Parameters": {
+        "ImageId": {
+            "Type": "String",
+            "Default": "ami-1234567890abcdef0"
+        },
+        "keyName": {
+            "Type": "String",
+            "Default": "infra-key"
+        },
+        "InstanceType": {
+            "Type": "String",
+            "Default": "t2.micro"
+        }
     },
-   "keyName" : {
-     "Type" : "String"
-     "Default": "infra-key"
-   },
-   "InstanceType" : {
-     "Type" : "String",
-     "Default": "t2.micro"
-   }
-},
-"Resources":{
-     "Ec2Instance": {
-    "Type": "AWS::EC2::Instance",
-    "Properties": {
-        "ImageId": {"Ref":"ImageId"},
-        "KeyName": {"Ref":"keyName"},
-        "InstanceType" : {"Ref":"InstanceType"} 
+    "Resources": {
+        "EC2Instance": {
+            "Type": "AWS::EC2::Instance",
+            "Properties": {
+                "ImageId": {
+                    "Ref": "ImageId"
+                },
+                "KeyName": {
+                    "Ref": "keyName"
+                },
+                "InstanceType": {
+                    "Ref": "InstanceType"
+                }
+            }
+        }
     }
-}
 }
