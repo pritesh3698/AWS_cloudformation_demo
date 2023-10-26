@@ -1,45 +1,26 @@
 {
-  "Type" : "AWS::EC2::Instance",
-  "Properties" : {
-      "AdditionalInfo" : String,
-      "Affinity" : String,
-      "AvailabilityZone" : String,
-      "BlockDeviceMappings" : [ BlockDeviceMapping, ... ],
-      "CpuOptions" : CpuOptions,
-      "CreditSpecification" : CreditSpecification,
-      "DisableApiTermination" : Boolean,
-      "EbsOptimized" : Boolean,
-      "ElasticGpuSpecifications" : [ ElasticGpuSpecification, ... ],
-      "ElasticInferenceAccelerators" : [ ElasticInferenceAccelerator, ... ],
-      "EnclaveOptions" : EnclaveOptions,
-      "HibernationOptions" : HibernationOptions,
-      "HostId" : String,
-      "HostResourceGroupArn" : String,
-      "IamInstanceProfile" : String,
-      "ImageId" : String,
-      "InstanceInitiatedShutdownBehavior" : String,
-      "InstanceType" : String,
-      "Ipv6AddressCount" : Integer,
-      "Ipv6Addresses" : [ InstanceIpv6Address, ... ],
-      "KernelId" : String,
-      "KeyName" : String,
-      "LaunchTemplate" : LaunchTemplateSpecification,
-      "LicenseSpecifications" : [ LicenseSpecification, ... ],
-      "Monitoring" : Boolean,
-      "NetworkInterfaces" : [ NetworkInterface, ... ],
-      "PlacementGroupName" : String,
-      "PrivateDnsNameOptions" : PrivateDnsNameOptions,
-      "PrivateIpAddress" : String,
-      "PropagateTagsToVolumeOnCreation" : Boolean,
-      "RamdiskId" : String,
-      "SecurityGroupIds" : [ String, ... ],
-      "SecurityGroups" : [ String, ... ],
-      "SourceDestCheck" : Boolean,
-      "SsmAssociations" : [ SsmAssociation, ... ],
-      "SubnetId" : String,
-      "Tags" : [ Tag, ... ],
-      "Tenancy" : String,
-      "UserData" : String,
-      "Volumes" : [ Volume, ... ]
+   "AWSTemplateFormationVersion": "2010-09-09",
+   "Parameters" :{
+       "ImageId : {
+           "Type" : "String",
+           "Default": "ami-1234567890abcdef0"
+    },
+   "keyName" : {
+     "Type" : "String"
+     "Default": "infra-key"
+   },
+   "InstanceType" : {
+     "Type" : "String",
+     "Default": "t2.micro"
+   }
+},
+"Resources":{
+     "Ec2Instance": {
+    "Type": "AWS::EC2::Instance",
+    "Properties": {
+        "ImageId": {"Ref":"ImageId"},
+        "KeyName": {"Ref":"keyName"},
+        "InstanceType" : {"Ref":"InstanceType"} 
     }
+}
 }
